@@ -75,7 +75,7 @@ function logMaker(type, coloredKey) {
     stringColor: 'green'
   };
 
-  return () => {
+  return (...args) => {
     let newTime = getMicroTime();
     let msg = msgBase;
 
@@ -84,13 +84,13 @@ function logMaker(type, coloredKey) {
     process.stdout.write(msg + coloredKey + Colors.none +" ");
     prevCallTime = newTime;
     if (!Args.dpretty) {
-      messenger.apply(console, arguments);
+      messenger.apply(console, args);
     } else {
-      let argList = new Array(arguments.length), i = -1;
+      let argList = new Array(args.length), i = -1;
       while (++i < arguments.length) {
-        argList[i] = (typeof arguments === "object")
-          ? Pretty.render(arguments[i], prettyOpts)
-          : arguments[i];
+        argList[i] = (typeof args === "object")
+          ? Pretty.render(args[i], prettyOpts)
+          : args[i];
       }
       messenger.apply(console, argList);
     }
