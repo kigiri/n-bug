@@ -1,6 +1,6 @@
 {
   "name": "n-bug",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Remove all those bugs ! (Log tool)",
   "main": "index.js",
   "scripts": {
